@@ -20,6 +20,7 @@ public class EmagHomePage {
     private WebElement searchButton;
 
     //constructor
+
     public EmagHomePage(WebDriver driver) {
         {
             this.driver = driver;
@@ -30,6 +31,7 @@ public class EmagHomePage {
     }
 
     //methods
+
     //Fill search box
     public EmagHomePage fillSearchButton(String name) {
         searchBox.sendKeys(name);
@@ -37,7 +39,6 @@ public class EmagHomePage {
     }
 
     //Click on search button
-
     public EmagHomePage clickOnSearchButton() {
         searchButton.click();
         return this;
