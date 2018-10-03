@@ -2,7 +2,6 @@ package pages;
 
 import help.HelperMethodes;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -30,19 +29,20 @@ public class EmagSearchPage {
         Assert.assertEquals("Cauti Samsung Galaxy S9 ? Descopera Oferta - eMAG.ro", driver.getTitle());
     }
 
-    public EmagSearchPage clickOnSelectedPhone ()
-
-    {
-        functions.scrollDownMore(driver);
-        phoneButton.click();
-        return this;
-
-    }
-
     public void validateResults ()
     {
         Assert.assertTrue(searchResult.getText().contains("Samsung Galaxy S9"));
     }
+
+    public EmagPhonePage clickOnSelectedPhone ()
+
+    {
+        functions.scrollDownMore(driver);
+        phoneButton.click();
+        return new EmagPhonePage(driver);
+
+    }
+
 
 
 

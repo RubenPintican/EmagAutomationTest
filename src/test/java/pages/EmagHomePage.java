@@ -32,19 +32,23 @@ public class EmagHomePage {
 
     //methods
 
+    public void verifyPageTitle()
+    {
+        Assert.assertTrue(driver.getTitle().contains("eMAG.ro - Găsești mai mult decât crezi"));
+    }
+
     //Fill search box
-    public EmagHomePage fillSearchButton(String name) {
+    public EmagHomePage fillSearchButton(String name)
+    {
         searchBox.sendKeys(name);
         return this;
     }
 
     //Click on search button
-    public EmagHomePage clickOnSearchButton() {
+    public EmagSearchPage clickOnSearchButton()
+    {
         searchButton.click();
-        return this;
+        return new EmagSearchPage(driver);
     }
 
-    public void verifyPageTitle() {
-        Assert.assertTrue(driver.getTitle().contains("eMAG.ro - Găsești mai mult decât crezi"));
-    }
 }
