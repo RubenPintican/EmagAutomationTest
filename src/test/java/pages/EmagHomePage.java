@@ -1,54 +1,31 @@
 package pages;
 
-import help.HelperMethodes;
+import help.HelperMethods;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-public class EmagHomePage {
+public class EmagHomePage extends BasePage {
 
     WebDriver driver;
 
-    public HelperMethodes functions = new HelperMethodes(driver);
-
-    @FindBy(how = How.ID, using = "searchboxTrigger")
-    private WebElement searchBox;
-    @FindBy(how = How.XPATH, using = "//button[@class='btn btn-default searchbox-submit-button']")
-    private WebElement searchButton;
+    public HelperMethods callmethod = new HelperMethods(driver);
 
     //constructor
 
     public EmagHomePage(WebDriver driver) {
+        super(driver);
         {
             this.driver = driver;
-            //This initElements method will create all WebElements
             PageFactory.initElements(driver, this);
 
         }
     }
 
-    //methods
+    //Methods
 
-    public void verifyPageTitle()
-    {
+    public BasePage verifyPageTitle() {
         Assert.assertTrue(driver.getTitle().contains("eMAG.ro - Găsești mai mult decât crezi"));
-    }
-
-    //Fill search box
-    public EmagHomePage fillSearchButton(String name)
-    {
-        searchBox.sendKeys(name);
         return this;
     }
-
-    //Click on search button
-    public EmagSearchPage clickOnSearchButton()
-    {
-        searchButton.click();
-        return new EmagSearchPage(driver);
-    }
-
 }

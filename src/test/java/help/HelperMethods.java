@@ -3,20 +3,20 @@ package help;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class HelperMethodes {
+public class HelperMethods {
 
     WebDriver driver;
 
     //Constructor
 
-    public HelperMethodes(WebDriver driver)
+    public HelperMethods(WebDriver driver)
 
     {
-
         this.driver=driver;
-
     }
 
     //Methods
@@ -26,9 +26,7 @@ public class HelperMethodes {
     public void clickWebElement(WebElement element)
 
     {
-
         element.click();
-
     }
 
     //Fill WebElement with a value
@@ -36,10 +34,15 @@ public class HelperMethodes {
     public void fillWebElement (WebElement element, String value)
 
     {
-
         element.sendKeys(value);
-
     }
+
+    //Wait Explicit
+
+        public void waitExplicit ( WebElement element, WebDriver driver)
+        {
+            new WebDriverWait(driver, 15).until(ExpectedConditions.visibilityOf(element));
+        }
 
     //Validate page
 
@@ -49,7 +52,6 @@ public class HelperMethodes {
         {
             String actual=driver.getTitle();
         }
-
     }
 
     //Select by Text

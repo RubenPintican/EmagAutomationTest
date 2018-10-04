@@ -1,15 +1,13 @@
 package tests;
 
 import help.BaseTest;
-import pages.EmagHomePage;
 import org.junit.Test;
+import pages.EmagHomePage;
 
-
-public class EmagProductSearchTest extends BaseTest {
-
+public class EmagDiscountProductTest extends BaseTest {
     @Test
 
-    public void productSearchTest() {
+    public void discountProductTest() {
         EmagHomePage homePage = new EmagHomePage(driver);
         homePage.verifyPageTitle()
                 .fillSearchField("Samsung Galaxy S9")
@@ -18,10 +16,7 @@ public class EmagProductSearchTest extends BaseTest {
                 .validateResults("Samsung Galaxy S9")
                 .clickOnSelectedPhone()
                 .validatePageProduct()
-                .addPhoneToCart()
-                .validateProductInCart()
-                .clickOnDetailsButton()
-                .validateOrderSummary();
+                .validateDiscountProduct();
 
     }
 }
