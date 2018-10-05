@@ -1,22 +1,31 @@
 package tests;
 
 import help.BaseTest;
+import help.TestData;
 import org.junit.Test;
 import pages.EmagHomePage;
+
+import java.io.IOException;
 
 public class EmagDiscountProductTest extends BaseTest {
     @Test
 
-    public void discountProductTest() {
+    public void discountProductTest() throws IOException {
+        TestData testData = new TestData();
+        String productName = testData.properties.getProperty("product.name");
+        String oldPrice = testData.properties.getProperty("old.price");
+        String newPrice = testData.properties.getProperty("new.price");
+        String discount = testData.properties.getProperty("discount");
         EmagHomePage homePage = new EmagHomePage(driver);
         homePage.verifyPageTitle()
-                .fillSearchField("Samsung Galaxy S9")
+                .fillSearchField(productName)
                 .clickOnSearchButton()
-                .verifySearchPageTitle()
-                .validateResults("Samsung Galaxy S9")
-                .clickOnSelectedPhone()
+                .verifySearchPageTitle(productName)
+                .validateResults(productName)
+                .clickOnFirstCorrectProduct(productName)
                 .validatePageProduct()
-                .validateDiscountProduct();
+                .validateDiscountProduct(oldPrice, newPrice, discount)
+                .verifyThatTheProductIsInStock();
 
     }
 }

@@ -10,20 +10,23 @@ import org.openqa.selenium.support.PageFactory;
 
 public class EmagCartShop extends BasePage {
 
-    WebDriver driver;
-    public HelperMethods callmethod = new HelperMethods(driver);
 
     @FindBy(how = How.XPATH, using = "//div[@class='order-summary-text']")
     private WebElement orderSummary;
 
     public EmagCartShop(WebDriver driver) {
-        super(driver);
-        {
+
+            super(driver);
             this.driver = driver;
             PageFactory.initElements(driver, this);
-        }
+
     }
 
+    /**
+     * Command summary validation
+     *
+     * @return
+     */
     public EmagCartShop validateOrderSummary() {
         Assert.assertTrue(driver.getPageSource().contains("Sumar comanda"));
         return this;

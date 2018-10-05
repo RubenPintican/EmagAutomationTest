@@ -7,25 +7,21 @@ import org.openqa.selenium.support.PageFactory;
 
 public class EmagHomePage extends BasePage {
 
-    WebDriver driver;
-
-    public HelperMethods callmethod = new HelperMethods(driver);
-
-    //constructor
 
     public EmagHomePage(WebDriver driver) {
-        super(driver);
-        {
+
+            super(driver);
             this.driver = driver;
             PageFactory.initElements(driver, this);
-
-        }
     }
 
-    //Methods
-
+    /**
+     * Verify that page title is correct
+      * @return
+     */
     public BasePage verifyPageTitle() {
         Assert.assertTrue(driver.getTitle().contains("eMAG.ro - Găsești mai mult decât crezi"));
         return this;
     }
+
 }

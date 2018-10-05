@@ -1,22 +1,27 @@
 package tests;
 
 import help.BaseTest;
+import help.TestData;
 import pages.EmagHomePage;
 import org.junit.Test;
+
+import java.io.IOException;
 
 
 public class EmagProductSearchTest extends BaseTest {
 
     @Test
 
-    public void productSearchTest() {
+    public void productSearchTest() throws IOException {
         EmagHomePage homePage = new EmagHomePage(driver);
+        TestData testData = new TestData();
+        String productName = testData.properties.getProperty("product.name");
         homePage.verifyPageTitle()
                 .fillSearchField("Samsung Galaxy S9")
                 .clickOnSearchButton()
-                .verifySearchPageTitle()
+                .verifySearchPageTitle("Samsung Galaxy S9")
                 .validateResults("Samsung Galaxy S9")
-                .clickOnSelectedPhone()
+                .clickOnFirstCorrectProduct(productName)
                 .validatePageProduct()
                 .addPhoneToCart()
                 .validateProductInCart()

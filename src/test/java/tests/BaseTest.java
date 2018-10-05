@@ -4,9 +4,13 @@ import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import java.io.IOException;
+
 public class BaseTest {
 
     public WebDriver driver;
+
+
 
     @Before
     public void setup ()
