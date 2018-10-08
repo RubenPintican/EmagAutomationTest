@@ -10,7 +10,14 @@ public class BaseTest {
 
     public WebDriver driver;
 
+    TestData testData = new TestData();
+    protected String productName = testData.properties.getProperty("product.name");
+    protected String oldPrice = testData.properties.getProperty("old.price");
+    protected String newPrice = testData.properties.getProperty("new.price");
+    protected String discount = testData.properties.getProperty("discount");
 
+    public BaseTest() throws IOException {
+    }
 
     @Before
     public void setup ()
@@ -19,8 +26,6 @@ public class BaseTest {
         System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
 
         driver = new FirefoxDriver();
-
-        driver.get("https://www.emag.ro/");
 
         driver.manage().window().maximize();
     }

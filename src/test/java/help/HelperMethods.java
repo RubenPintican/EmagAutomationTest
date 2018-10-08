@@ -1,6 +1,7 @@
 package help;
 
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -107,6 +108,15 @@ public class HelperMethods {
     public void scrollDownMore(WebDriver driver) {
         JavascriptExecutor jsx = (JavascriptExecutor) driver;
         jsx.executeScript("window.scrollBy(0,450)", "");
+    }
+
+    public boolean isElementPresent(WebElement element) {
+        try {
+            element.isDisplayed();
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+        return true;
     }
 }
 

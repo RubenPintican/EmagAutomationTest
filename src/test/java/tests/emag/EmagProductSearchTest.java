@@ -1,14 +1,17 @@
-package tests;
+package tests.emag;
 
 import help.BaseTest;
 import help.TestData;
-import pages.EmagHomePage;
+import pages.emag.EmagHomePage;
 import org.junit.Test;
 
 import java.io.IOException;
 
 
 public class EmagProductSearchTest extends BaseTest {
+
+    public EmagProductSearchTest() throws IOException {
+    }
 
     @Test
 

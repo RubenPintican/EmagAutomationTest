@@ -1,5 +1,6 @@
-package pages;
+package pages.emag;
 
+import help.HelperMethods;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-public class EmagProductPage extends BasePage {
+public class EmagProductPage extends BasePage<EmagProductPage> {
 
     @FindBy(how = How.XPATH, using = "//i[@class='em em-cart_fill gtm_680klw']")
     private WebElement addCartButton;
@@ -25,7 +26,10 @@ public class EmagProductPage extends BasePage {
     private WebElement discount;
     @FindBy(how = How.XPATH, using = "//form[@class='main-product-form']//*[@class='label label-in_stock']")
     private WebElement inStock;
+    @FindBy (how = How.XPATH, using = "//span[@class='label label-limited_stock_qty']")
+    private WebElement limitedStockLabel;
 
+    public HelperMethods helper = new HelperMethods(driver);
 
     public EmagProductPage(WebDriver driver) {
         super(driver);
@@ -66,7 +70,7 @@ public class EmagProductPage extends BasePage {
      * @return
      */
     public EmagProductPage verifyThatTheProductIsInStock() {
-        Assert.assertTrue("The page should contains inStock element", inStock.isDisplayed());
+        Assert.assertTrue("Product not in stock",helper.isElementPresent(limitedStockLabel)||helper.isElementPresent(inStock));
         return this;
     }
 
@@ -98,8 +102,15 @@ public class EmagProductPage extends BasePage {
      */
     public EmagCartShop clickOnDetailsButton() {
         clickOnDetailsCartButton.click();
-        return new EmagCartShop(driver);
+        return new EmagCartShop(driver).get();
     }
 
 
+    protected void load() {
+    driver.navigate().refresh();
+    }
+
+    protected void isLoaded() throws Error {
+
+    }
 }

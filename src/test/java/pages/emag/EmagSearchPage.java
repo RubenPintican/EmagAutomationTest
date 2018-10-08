@@ -1,4 +1,4 @@
-package pages;
+package pages.emag;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -9,13 +9,14 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class EmagSearchPage extends BasePage {
+public class EmagSearchPage extends BasePage<EmagSearchPage> {
 
     @FindBy(how = How.XPATH, using = ".//*[@class='title-phrasing title-phrasing-xl']")
     private WebElement searchResult;
+    @FindAll({@FindBy(how = How.XPATH, using = ".//*[@id='card_grid']//div/h2/a")})
+    private List<WebElement> productList;
 
 
     public EmagSearchPage(WebDriver driver) {
@@ -64,7 +65,23 @@ public class EmagSearchPage extends BasePage {
         return null;
 
     }
+    public EmagProductPage clickOnFirstItems(String productName) {
+        for (int i = 0; i < productList.size(); i++) {
+            if (productList.get(i).getText().contains(productName)) {
+                productList.get(i).click();
+                return new EmagProductPage(driver).get();
+            }
+        }
+        return null;
+    }
 
+    protected void load() {
+        driver.navigate().refresh();
+    }
+
+    protected void isLoaded() throws Error {
+        
+    }
 }
 
 

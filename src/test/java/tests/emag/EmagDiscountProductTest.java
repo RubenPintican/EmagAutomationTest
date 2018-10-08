@@ -1,22 +1,19 @@
-package tests;
+package tests.emag;
 
 import help.BaseTest;
-import help.TestData;
 import org.junit.Test;
-import pages.EmagHomePage;
+import pages.emag.EmagHomePage;
 
 import java.io.IOException;
 
 public class EmagDiscountProductTest extends BaseTest {
+    public EmagDiscountProductTest() throws IOException {
+    }
+
     @Test
 
-    public void discountProductTest() throws IOException {
-        TestData testData = new TestData();
-        String productName = testData.properties.getProperty("product.name");
-        String oldPrice = testData.properties.getProperty("old.price");
-        String newPrice = testData.properties.getProperty("new.price");
-        String discount = testData.properties.getProperty("discount");
-        EmagHomePage homePage = new EmagHomePage(driver);
+    public void discountProductTest() {
+        EmagHomePage homePage = new EmagHomePage(driver).get();
         homePage.verifyPageTitle()
                 .fillSearchField(productName)
                 .clickOnSearchButton()
