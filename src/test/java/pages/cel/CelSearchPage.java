@@ -25,8 +25,8 @@ public class CelSearchPage extends BasePage<CelSearchPage> {
     private List<WebElement> productList;
 
 
-    public CelSearchPage validateResults(String productName) {
-        Assert.assertTrue(searchResult.getText().contains(productName));
+    public CelSearchPage validateResults() {
+        Assert.assertTrue(searchResult.getText().contains("Iphone x"));
         return this;
     }
 
@@ -45,6 +45,6 @@ public class CelSearchPage extends BasePage<CelSearchPage> {
     }
 
     protected void isLoaded() throws Error {
-
+        Assert.assertTrue(driver.getTitle().contains("Iphone x ieftin ieftine  pagina 1"));
     }
 }

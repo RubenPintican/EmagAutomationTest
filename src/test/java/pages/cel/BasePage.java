@@ -7,11 +7,11 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.LoadableComponent;
 
-public abstract class BasePage<T extends LoadableComponent<T>>extends LoadableComponent<T> {
+public abstract class BasePage<T extends LoadableComponent<T>> extends LoadableComponent<T> {
 
     WebDriver driver;
 
-    @FindBy (how = How.XPATH, using = "//input[@id='keyword']")
+    @FindBy(how = How.XPATH, using = "//input[@id='keyword']")
     private WebElement searchField;
     @FindBy(how = How.XPATH, using = ".//*[@id='quick_find']/button")
     private WebElement searchButton;
@@ -23,6 +23,7 @@ public abstract class BasePage<T extends LoadableComponent<T>>extends LoadableCo
 
         }
     }
+
     /**
      * Fill search field
      *

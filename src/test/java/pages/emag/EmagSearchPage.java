@@ -80,7 +80,7 @@ public class EmagSearchPage extends BasePage<EmagSearchPage> {
     }
 
     protected void isLoaded() throws Error {
-        
+        Assert.assertTrue(driver.getTitle().contains("Cauti iPhone X ? Descopera Oferta - eMAG.ro"));
     }
 }
 

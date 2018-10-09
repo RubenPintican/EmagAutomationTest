@@ -15,6 +15,7 @@ public class BaseTest {
     protected String oldPrice = testData.properties.getProperty("old.price");
     protected String newPrice = testData.properties.getProperty("new.price");
     protected String discount = testData.properties.getProperty("discount");
+    protected String email = testData.properties.getProperty("base.email.address")+ System.currentTimeMillis()+"@yahoo.com";
 
     public BaseTest() throws IOException {
     }

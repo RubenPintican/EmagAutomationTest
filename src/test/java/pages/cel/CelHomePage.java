@@ -6,12 +6,12 @@ import org.openqa.selenium.support.PageFactory;
 
 public class CelHomePage extends BasePage<CelHomePage> {
 
-   public CelHomePage (WebDriver driver) {
+    public CelHomePage(WebDriver driver) {
 
-       super(driver);
-       this.driver = driver;
-       PageFactory.initElements(driver, this);
-   }
+        super(driver);
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+    }
 
     public BasePage verifyPageTitle() {
         Assert.assertTrue(driver.getTitle().contains("CEL.ro - CEL mai ieftin, CEL mai rapid."));

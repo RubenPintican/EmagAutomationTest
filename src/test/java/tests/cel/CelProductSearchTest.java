@@ -19,7 +19,10 @@ public class CelProductSearchTest extends BaseTest {
         homePage.verifyPageTitle()
                 .fillSearchField(productName)
                 .clickOnSearchButton()
-//                .validateResults(productName)
-                .clickOnFirstItems(productName);
+                .validateResults()
+                .clickOnFirstItems(productName)
+                .validateDiscountProduct(oldPrice,newPrice, discount)
+                .verifyThatTheProductIsInStock()
+                .verifyThatPopUpIsPresent(email);
     }
 }

@@ -37,6 +37,6 @@ public class EmagCartShop extends BasePage<EmagCartShop> {
     }
 
     protected void isLoaded() throws Error {
-
+        Assert.assertTrue(driver.getPageSource().contains("Produsul a fost adaugat in cos"));
     }
 }

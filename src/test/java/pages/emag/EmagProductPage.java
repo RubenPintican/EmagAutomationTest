@@ -111,6 +111,6 @@ public class EmagProductPage extends BasePage<EmagProductPage> {
     }
 
     protected void isLoaded() throws Error {
-
+        Assert.assertTrue(driver.getTitle().contains("Telefon mobil Apple iPhone X, 64GB, 4G, Silver - eMAG.ro"));
     }
 }

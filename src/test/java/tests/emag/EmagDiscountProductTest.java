@@ -24,5 +24,6 @@ public class EmagDiscountProductTest extends BaseTest {
                 .validateDiscountProduct(oldPrice, newPrice, discount)
                 .verifyThatTheProductIsInStock();
 
+
     }
 }
