@@ -11,7 +11,7 @@ public abstract class BasePage<T extends LoadableComponent<T>> extends LoadableC
 
     WebDriver driver;
 
-    @FindBy(how = How.XPATH, using = "//input[@id='keyword']")
+    @FindBy(how = How.ID, using = "keyword")
     private WebElement searchField;
     @FindBy(how = How.XPATH, using = ".//*[@id='quick_find']/button")
     private WebElement searchButton;
@@ -42,6 +42,6 @@ public abstract class BasePage<T extends LoadableComponent<T>> extends LoadableC
      */
     public CelSearchPage clickOnSearchButton() {
         searchButton.click();
-        return new CelSearchPage(driver);
+        return new CelSearchPage(driver).get();
     }
 }

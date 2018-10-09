@@ -25,16 +25,16 @@ public class CelSearchPage extends BasePage<CelSearchPage> {
     private List<WebElement> productList;
 
 
-    public CelSearchPage validateResults() {
-        Assert.assertTrue(searchResult.getText().contains("Iphone x"));
+    public CelSearchPage validateResults(String productName) {
+        Assert.assertTrue(searchResult.getText().toUpperCase().contains(productName.toUpperCase()));
         return this;
     }
 
     public CelProductPage clickOnFirstItems(String productName) {
         for (int i = 0; i < productList.size(); i++) {
-            if (productList.get(i).getText().contains(productName)) {
+            if (productList.get(i).getText().toUpperCase().contains(productName.toUpperCase())) {
                 productList.get(i).click();
-                return new CelProductPage(driver);
+                return new CelProductPage(driver).get();
             }
         }
         return null;
@@ -45,6 +45,6 @@ public class CelSearchPage extends BasePage<CelSearchPage> {
     }
 
     protected void isLoaded() throws Error {
-        Assert.assertTrue(driver.getTitle().contains("Iphone x ieftin ieftine  pagina 1"));
+        Assert.assertTrue(driver.getTitle().contains("ieftin ieftine pagina 1"));
     }
 }

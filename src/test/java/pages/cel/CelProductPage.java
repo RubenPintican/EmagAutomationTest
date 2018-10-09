@@ -1,6 +1,7 @@
 package pages.cel;
 
 import help.HelperMethods;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -23,12 +24,14 @@ public class CelProductPage extends BasePage<CelProductPage> {
     private WebElement discount;
     @FindBy(how = How.ID, using = "info_stoc")
     private WebElement inStock;
-    @FindBy(how = How.ID, using = "info_stoc")
+    @FindBy(how = How.CLASS_NAME, using = "info_stoc in_stoc_furnizor")
     private WebElement limitedStockLabel;
     @FindBy(how = How.ID, using = "email_news")
     private WebElement emailFieldNewsletter;
     @FindBy(how = How.XPATH, using = "//button[@class='send']")
     private WebElement subscribeNewsletterButton;
+    @FindBy(how = How.XPATH, using = "//h2[@class='productName']")
+    private WebElement productName;
 
     public CelProductPage(WebDriver driver) {
         super(driver);
@@ -40,9 +43,9 @@ public class CelProductPage extends BasePage<CelProductPage> {
         String actualOldPrice = fullPrice.getText();
         String actualNewPrice = salesPrice.getText();
         String actualDiscount = discount.getText();
-        Assert.assertEquals("Old price incorrectly displayed", expectedOldPrice, actualOldPrice);
-        Assert.assertEquals(expectedNewPrice, actualNewPrice);
-        Assert.assertEquals(expectedDiscount, actualDiscount);
+        Assert.assertEquals("Old price is not correct" , expectedOldPrice, StringUtils.substringBetween(actualOldPrice , "pret vechi ".toUpperCase(), " lei".toUpperCase()));
+        Assert.assertEquals("New price is not correct",expectedNewPrice, actualNewPrice);
+        Assert.assertTrue("Discount is not correct", actualDiscount.contains(expectedDiscount));
         return this;
     }
 
@@ -56,6 +59,7 @@ public class CelProductPage extends BasePage<CelProductPage> {
         if (helper.isElementPresent(emailFieldNewsletter)) {
             emailFieldNewsletter.sendKeys(email);
             subscribeNewsletterButton.click();
+            helper.waitExplicitElementDisappear(emailFieldNewsletter, driver);
         }
 
         return this;
@@ -68,6 +72,6 @@ public class CelProductPage extends BasePage<CelProductPage> {
     }
 
     protected void isLoaded() throws Error {
-        Assert.assertTrue(driver.getTitle().contains("Telefon Mobil Apple iPhone X 256GB Space Gray "));
+        Assert.assertTrue("The product page is not loaded", helper.isElementPresent(productName));
     }
 }

@@ -48,6 +48,11 @@ public class HelperMethods {
         new WebDriverWait(driver, 15).until(ExpectedConditions.visibilityOf(element));
     }
 
+    public void waitExplicitElementDisappear(WebElement element, WebDriver driver) {
+        new WebDriverWait(driver, 15).until(ExpectedConditions.invisibilityOf(element));
+    }
+
+
     /**
      * Validate page title
      *

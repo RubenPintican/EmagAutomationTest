@@ -13,11 +13,14 @@ import java.util.Properties;
 public class TestData {
     public Properties properties = new Properties();
 
-    public TestData () throws IOException {
-       properties.load(new FileInputStream("testData.properties"));
+    public TestData() throws IOException {
+        properties.load(new FileInputStream("testData.properties"));
+
+
+        System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
+
+
     }
-
-
 
 
 }
