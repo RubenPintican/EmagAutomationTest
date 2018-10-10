@@ -21,8 +21,8 @@ public class EmagDiscountProductTest extends BaseTest {
                 .validateResults(productName)
                 .clickOnFirstCorrectProduct(productName)
                 .validatePageProduct()
-                .validateDiscountProduct(oldPrice, newPrice, discount)
-                .verifyThatTheProductIsInStock();
+                .verifyThatTheProductIsInStock()
+                .validateDiscountProduct(oldPrice, newPrice, discount);
 
 
     }
