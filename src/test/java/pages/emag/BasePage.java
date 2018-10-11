@@ -15,6 +15,8 @@ public abstract class BasePage<T extends LoadableComponent<T>>extends LoadableCo
     private WebElement searchField;
     @FindBy(how = How.XPATH, using = "//button[@class='btn btn-default searchbox-submit-button']")
     private WebElement searchButton;
+    @FindBy(how = How.ID, using = "my_account")
+    private WebElement myAccountButton;
 
     public BasePage(WebDriver driver) {
         {
@@ -22,6 +24,12 @@ public abstract class BasePage<T extends LoadableComponent<T>>extends LoadableCo
             PageFactory.initElements(driver, this);
 
         }
+    }
+
+    public EmagSingUpPage goToSingUp()
+    {
+        myAccountButton.click();
+        return new EmagSingUpPage(driver).get();
     }
 
     /**

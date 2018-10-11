@@ -25,7 +25,7 @@ public class EmagProductSearchTest extends BaseTest {
                 .verifySearchPageTitle("Samsung Galaxy S9")
                 .validateResults("Samsung Galaxy S9")
                 .clickOnFirstCorrectProduct(productName)
-                .validatePageProduct()
+                .validateCodProduct()
                 .addPhoneToCart()
                 .validateProductInCart()
                 .clickOnDetailsButton()

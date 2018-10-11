@@ -43,4 +43,6 @@ public class EmagHomePage extends BasePage<EmagHomePage> {
     protected void isLoaded() throws Error {
         Assert.assertTrue("Button is not present",helper.isElementPresent(logoButton));
     }
+
+
 }

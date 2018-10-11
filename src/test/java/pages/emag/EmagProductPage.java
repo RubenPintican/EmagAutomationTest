@@ -29,6 +29,9 @@ public class EmagProductPage extends BasePage<EmagProductPage> {
     private WebElement inStock;
     @FindBy (how = How.XPATH, using = "//span[@class='label label-limited_stock_qty']")
     private WebElement limitedStockLabel;
+    @FindBy (how = How.XPATH, using = "//span[@class='product-code-display pull-left']")
+    private WebElement productCod;
+
 
     public HelperMethods helper = new HelperMethods(driver);
 
@@ -43,8 +46,9 @@ public class EmagProductPage extends BasePage<EmagProductPage> {
      *
      * @return
      */
-    public EmagProductPage validatePageProduct() {
-        Assert.assertTrue(driver.getPageSource().contains("Cod produs"));
+    public EmagProductPage validateCodProduct() {
+        String productCodValue = productCod.getText();
+        Assert.assertTrue(productCodValue.contains("Cod produs"));
         return this;
     }
 
@@ -91,6 +95,7 @@ public class EmagProductPage extends BasePage<EmagProductPage> {
      *
      * @return
      */
+    //schimba assert
     public EmagProductPage validateProductInCart() {
         Assert.assertTrue(driver.getPageSource().contains("Produsul a fost adaugat in cos"));
         return this;
@@ -110,8 +115,7 @@ public class EmagProductPage extends BasePage<EmagProductPage> {
     protected void load() {
     driver.navigate().refresh();
     }
-
     protected void isLoaded() throws Error {
-        Assert.assertTrue(driver.getTitle().contains("Telefon mobil Apple iPhone X, 64GB, 4G, Silver - eMAG.ro"));
+        Assert.assertTrue("The element is not present", helper.isElementPresent(productCod));
     }
 }

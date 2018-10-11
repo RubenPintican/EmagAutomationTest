@@ -14,13 +14,20 @@ public class EmagDiscountProductTest extends BaseTest {
 
     public void discountProductTest() {
         EmagHomePage homePage = new EmagHomePage(driver).get();
+
+
         homePage.verifyPageTitle()
+                .goToSingUp()
+                .fillEmailField(email)
+                .clickOnContinueButton()
+                .fillSingUpPage("Gigi Boss","dinamo21","dinamo21")
+                .clickOnContinueButton()
                 .fillSearchField(productName)
                 .clickOnSearchButton()
                 .verifySearchPageTitle(productName)
                 .validateResults(productName)
                 .clickOnFirstCorrectProduct(productName)
-                .validatePageProduct()
+                .validateCodProduct()
                 .verifyThatTheProductIsInStock()
                 .validateDiscountProduct(oldPrice, newPrice, discount);
 

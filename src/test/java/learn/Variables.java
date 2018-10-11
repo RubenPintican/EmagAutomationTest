@@ -1,7 +1,9 @@
 package learn;
 
 public class Variables {
+
     public static void main(String args[]) {
+
         byte x;
         int a = 270;
         double b = 128.128;
@@ -14,5 +16,6 @@ public class Variables {
         System.out.println("\ndouble converted to byte");
         x = (byte)b;
         System.out.println("b and x " + b + " " + x);
+
     }
 }
