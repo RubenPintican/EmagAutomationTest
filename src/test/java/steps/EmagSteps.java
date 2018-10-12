@@ -56,10 +56,29 @@ public class EmagSteps extends Steps {
                .clickOnAgreeTerms()
                .clickOnConfirmAgeButton()
                .clickonContinueButton();
-
-
    }
-   @When("I search for $product on eMag")
+
+    @When("I SingIn on eMag")
+    public void singInPage()
+    {
+        EmagHomePage homePage = new EmagHomePage(driver).get();
+        homePage.verifyPageTitle()
+                .goToSingIn()
+                .fillEmailField()
+                .clickOnContinueButton()
+                .fillPasswordField("Emag2018!")
+                .clickOnContinueButton()
+                .goToAccountPage()
+                .clickGenderButton()
+                .fillAccountDataPage("Ruben","0756317934")
+                .clickDayButton()
+                .clickMonthButton()
+                .clickYearButton()
+                .clickEducationButton();
+    }
+
+
+    @When("I search for $product on eMag")
     public void searchForProduct(String product)
    {
        EmagHomePage homePage = new EmagHomePage(driver).get();
@@ -76,7 +95,11 @@ public class EmagSteps extends Steps {
        EmagProductPage productPage = new EmagProductPage(driver).get();
        productPage.validateCodProduct()
                .verifyThatTheProductIsInStock()
-               .validateDiscountProduct(oldprice, newprice, discount);
+               .validateDiscountProduct(oldprice, newprice, discount)
+               .addPhoneToCart()
+               .clickOnDetailsButton()
+               .validateOrderSummary()
+               .verifyProductInCart();
 
    }
 

@@ -85,8 +85,7 @@ public class EmagProductPage extends BasePage<EmagProductPage> {
      * @return
      */
     public EmagProductPage addPhoneToCart() {
-        helper.waitExplicit(addCartButton, driver);
-        addCartButton.click();
+        helper.clickWebElement(addCartButton);
         return this;
     }
 
@@ -107,7 +106,8 @@ public class EmagProductPage extends BasePage<EmagProductPage> {
      * @return
      */
     public EmagCartShop clickOnDetailsButton() {
-        clickOnDetailsCartButton.click();
+
+        helper.clickWebElement(clickOnDetailsCartButton);
         return new EmagCartShop(driver).get();
     }
 

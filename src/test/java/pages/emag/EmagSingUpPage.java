@@ -1,5 +1,6 @@
 package pages.emag;
 
+import help.HelperMethods;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -7,6 +8,8 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 public class EmagSingUpPage extends BasePage<EmagSingUpPage>{
+
+    public HelperMethods helper  = new HelperMethods(driver);
 
     @FindBy(how = How.ID, using = "email")
     private WebElement emailTextField;
@@ -41,11 +44,12 @@ public class EmagSingUpPage extends BasePage<EmagSingUpPage>{
 
     public EmagSingUpPage clickOnContinueButton()
     {
-        continueButton.click();
+        helper.clickWebElement(continueButton);
         return this;
     }
 
     public EmagSingUpPage fillSingUpPage (String name, String password, String confirmationPassword) {
+        helper.waitExplicit(nameField,driver);
         nameField.sendKeys(name);
         passwordField.sendKeys(password);
         confirmPasswordField.sendKeys(confirmationPassword);
@@ -60,14 +64,14 @@ public class EmagSingUpPage extends BasePage<EmagSingUpPage>{
 
     public EmagSingUpPage clickOnConfirmAgeButton()
     {
-        confirmAgeButton.click();
+        confirmPasswordField.click();
         return this;
     }
 
     public EmagSearchPage clickonContinueButton()
     {
-        continueButton.click();
-        return new EmagSearchPage(driver);
+        continueButton2.click();
+        return new EmagSearchPage(driver).get();
     }
 
 

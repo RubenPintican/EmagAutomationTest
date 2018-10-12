@@ -15,6 +15,8 @@ public class EmagHomePage extends BasePage<EmagHomePage> {
     private WebElement backHomePageButton;
     @FindBy (how = How.XPATH,using = ".//*[@id='masthead']//div[1]/a/img")
     private WebElement logoButton;
+    @FindBy(how = How.ID, using = "my_account")
+    private WebElement myAccountButton;
 
     public EmagHomePage(WebDriver driver) {
 
@@ -33,11 +35,10 @@ public class EmagHomePage extends BasePage<EmagHomePage> {
         return this;
     }
 
-
     protected void load() {
         driver.get("https://www.emag.ro/");
         if (helper.isElementPresent(backHomePageButton))
-            backHomePageButton.click();
+            helper.clickWebElement(backHomePageButton);
     }
 
     protected void isLoaded() throws Error {

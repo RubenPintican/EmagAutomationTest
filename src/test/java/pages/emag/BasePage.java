@@ -31,6 +31,17 @@ public abstract class BasePage<T extends LoadableComponent<T>>extends LoadableCo
         myAccountButton.click();
         return new EmagSingUpPage(driver).get();
     }
+    public EmagSingInPage goToSingIn()
+    {
+        myAccountButton.click();
+        return new EmagSingInPage(driver).get();
+    }
+
+    public EmagAccountPage goToAccountPage ()
+    {
+        myAccountButton.click();
+        return new EmagAccountPage(driver).get();
+    }
 
     /**
      * Fill search field

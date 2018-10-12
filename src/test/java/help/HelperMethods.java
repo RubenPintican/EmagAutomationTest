@@ -23,6 +23,7 @@ public class HelperMethods {
      */
 
     public void clickWebElement(WebElement element) {
+        waitExplicit(element,driver);
         element.click();
     }
 
@@ -34,6 +35,7 @@ public class HelperMethods {
      */
 
     public void fillWebElement(WebElement element, String value) {
+        waitExplicit(element,driver);
         element.sendKeys(value);
     }
 
@@ -52,6 +54,12 @@ public class HelperMethods {
         new WebDriverWait(driver, 15).until(ExpectedConditions.invisibilityOf(element));
     }
 
+   public void waitFillPasswordBoxfillPasswordField (WebElement password)
+   {
+       JavascriptExecutor jse=(JavascriptExecutor)driver;
+       jse.executeScript("arguments[0].value='"+password+"';",password);
+
+   }
 
     /**
      * Validate page title

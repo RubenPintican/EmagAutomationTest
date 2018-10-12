@@ -59,7 +59,7 @@ public class EmagSearchPage extends BasePage<EmagSearchPage> {
             System.out.println(product);
             if (productList.get(i).getText().contains(productName)) {
                 productList.get(i).click();
-                return new EmagProductPage(driver);
+                return new EmagProductPage(driver).get();
             }
         }
         return null;

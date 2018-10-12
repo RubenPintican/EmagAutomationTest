@@ -21,6 +21,8 @@ public class EmagDiscountProductTest extends BaseTest {
                 .fillEmailField(email)
                 .clickOnContinueButton()
                 .fillSingUpPage("Gigi Boss","dinamo21","dinamo21")
+                .clickOnAgreeTerms()
+                .clickOnConfirmAgeButton()
                 .clickOnContinueButton()
                 .fillSearchField(productName)
                 .clickOnSearchButton()
