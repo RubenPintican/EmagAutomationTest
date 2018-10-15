@@ -4,6 +4,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -37,6 +38,16 @@ public class HelperMethods {
     public void fillWebElement(WebElement element, String value) {
         waitExplicit(element,driver);
         element.sendKeys(value);
+    }
+
+    /**
+     * Hover a WebElement
+     */
+
+    public void hoverWebElement ( WebElement element, WebDriver driver)
+    {
+        Actions action=new Actions(driver);
+        action.moveToElement(element).build().perform();
     }
 
     /**
