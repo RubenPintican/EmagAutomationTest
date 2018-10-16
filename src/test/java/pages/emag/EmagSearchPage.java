@@ -53,7 +53,7 @@ public class EmagSearchPage extends BasePage<EmagSearchPage> {
      * @return
      */
     public EmagProductPage clickOnFirstCorrectProduct(String productName) {
-        List<WebElement> productList= driver.findElements(By.xpath(".//*[@id='card_grid']//div/h2/a"));
+        List<WebElement> productList = driver.findElements(By.xpath(".//*[@id='card_grid']//div/h2/a"));
         for (int i = 0; i < productList.size(); i++) {
             String product = productList.get(i).getText();
             System.out.println(product);
@@ -65,6 +65,7 @@ public class EmagSearchPage extends BasePage<EmagSearchPage> {
         return null;
 
     }
+
     public EmagProductPage clickOnFirstItems(String productName) {
         for (int i = 0; i < productList.size(); i++) {
             if (productList.get(i).getText().contains(productName)) {

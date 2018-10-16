@@ -44,46 +44,53 @@ public class CelSingUpPage extends BasePage<CelSingUpPage> {
         PageFactory.initElements(driver, this);
     }
 
-    public CelSingUpPage fillFirstNameField()
+    public CelSingUpPage fillFirstNameField(String firstName)
     {
-        firstNameField.sendKeys();
+        helper.fillWebElement(firstNameField,driver);
+        firstNameField.sendKeys(firstName);
         return this;
     }
 
-    public CelSingUpPage fillLastNameField()
+    public CelSingUpPage fillLastNameField(String lastName)
     {
-        lastNameField.sendKeys();
+        helper.fillWebElement(lastNameField, driver);
+        lastNameField.sendKeys(lastName);
         return this;
     }
-    public CelSingUpPage fillEmailAddressField()
+    public CelSingUpPage fillEmailAddressField(String email)
     {
-        emailAddressField.sendKeys();
+        helper.fillWebElement(emailAddressField,driver);
+        emailAddressField.sendKeys(email);
         return this;
     }
 
     public CelSingUpPage clickGenderBox(String gender)
     {
         helper.selectByText(genderBox,gender);
+        helper.clickWebElement(genderBox);
         genderBox.click();
         return this;
     }
 
 
-    public CelSingUpPage fillTelephoneField()
+    public CelSingUpPage fillTelephoneField(String telephone)
     {
-        telephoneField.sendKeys();
+        helper.fillWebElement(telephoneField,driver);
+        telephoneField.sendKeys(telephone);
         return this;
     }
 
-    public CelSingUpPage fillStreetAddressField()
+    public CelSingUpPage fillStreetAddressField(String streetAddress)
     {
-        streetAddressField.sendKeys();
+        helper.fillWebElement(streetAddressField,driver);
+        streetAddressField.sendKeys(streetAddress);
         return this;
     }
 
     public CelSingUpPage clickSuburb(String suburb)
     {
         helper.selectByText(suburbField,suburb);
+        helper.clickWebElement(suburbField);
         suburbField.click();
         return this;
     }
@@ -91,6 +98,7 @@ public class CelSingUpPage extends BasePage<CelSingUpPage> {
     public CelSingUpPage clickCity(String city)
     {
         helper.selectByText(cityField,city);
+        helper.clickWebElement(cityField);
         cityField.click();
         return this;
     }

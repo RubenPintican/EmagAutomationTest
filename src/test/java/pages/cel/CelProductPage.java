@@ -1,6 +1,5 @@
 package pages.cel;
 
-import help.HelperMethods;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
@@ -10,9 +9,6 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 public class CelProductPage extends BasePage<CelProductPage> {
-
-    public HelperMethods helper = new HelperMethods(driver);
-
 
     @FindBy(how = How.XPATH, using = "//h2[@class='productName']")
     private WebElement validateProductPage;
@@ -43,8 +39,8 @@ public class CelProductPage extends BasePage<CelProductPage> {
         String actualOldPrice = fullPrice.getText();
         String actualNewPrice = salesPrice.getText();
         String actualDiscount = discount.getText();
-        Assert.assertEquals("Old price is not correct" , expectedOldPrice, StringUtils.substringBetween(actualOldPrice , "pret vechi ".toUpperCase(), " lei".toUpperCase()));
-        Assert.assertEquals("New price is not correct",expectedNewPrice, actualNewPrice);
+        Assert.assertEquals("Old price is not correct", expectedOldPrice, StringUtils.substringBetween(actualOldPrice, "pret vechi ".toUpperCase(), " lei".toUpperCase()));
+        Assert.assertEquals("New price is not correct", expectedNewPrice, actualNewPrice);
         Assert.assertTrue("Discount is not correct", actualDiscount.contains(expectedDiscount));
         return this;
     }

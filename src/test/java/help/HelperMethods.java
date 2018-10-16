@@ -30,14 +30,14 @@ public class HelperMethods {
 
     /**
      * Fill WebElement with a value
-     *
-     * @param element
-     * @param value
+     *  @param element
+     * @param
      */
 
-    public void fillWebElement(WebElement element, String value) {
+    public void fillWebElement(WebElement element, WebDriver driver) {
         waitExplicit(element,driver);
-        element.sendKeys(value);
+        element.clear();
+        element.sendKeys();
     }
 
     /**

@@ -27,9 +27,9 @@ public class EmagProductPage extends BasePage<EmagProductPage> {
     private WebElement discount;
     @FindBy(how = How.XPATH, using = "//form[@class='main-product-form']//*[@class='label label-in_stock']")
     private WebElement inStock;
-    @FindBy (how = How.XPATH, using = "//span[@class='label label-limited_stock_qty']")
+    @FindBy(how = How.XPATH, using = "//span[@class='label label-limited_stock_qty']")
     private WebElement limitedStockLabel;
-    @FindBy (how = How.XPATH, using = "//span[@class='product-code-display pull-left']")
+    @FindBy(how = How.XPATH, using = "//span[@class='product-code-display pull-left']")
     private WebElement productCod;
 
 
@@ -63,9 +63,9 @@ public class EmagProductPage extends BasePage<EmagProductPage> {
         String actualOldPrice = fullPrice.getText();
         String actualNewPrice = salesPrice.getText();
         String actualDiscount = discount.getText();
-        Assert.assertEquals("Old price is not correct" , expectedOldPrice,actualOldPrice);
-        Assert.assertEquals("",expectedNewPrice, actualNewPrice);
-        Assert.assertEquals("",expectedDiscount, actualDiscount);
+        Assert.assertEquals("Old price is not correct", expectedOldPrice, actualOldPrice);
+        Assert.assertEquals("New price is not correct", expectedNewPrice, actualNewPrice);
+        Assert.assertEquals("Discount is not correct", expectedDiscount, actualDiscount);
         return this;
     }
 
@@ -75,7 +75,7 @@ public class EmagProductPage extends BasePage<EmagProductPage> {
      * @return
      */
     public EmagProductPage verifyThatTheProductIsInStock() {
-        Assert.assertTrue("Product not in stock",helper.isElementPresent(limitedStockLabel)||helper.isElementPresent(inStock));
+        Assert.assertTrue("Product not in stock", helper.isElementPresent(limitedStockLabel) || helper.isElementPresent(inStock));
         return this;
     }
 
@@ -96,7 +96,7 @@ public class EmagProductPage extends BasePage<EmagProductPage> {
      */
     //schimba assert
     public EmagProductPage validateProductInCart() {
-        Assert.assertTrue(driver.getPageSource().contains("Produsul a fost adaugat in cos"));
+        Assert.assertTrue(helper.isElementPresent(validateProductInCart));
         return this;
     }
 
@@ -113,8 +113,9 @@ public class EmagProductPage extends BasePage<EmagProductPage> {
 
 
     protected void load() {
-    driver.navigate().refresh();
+        driver.navigate().refresh();
     }
+
     protected void isLoaded() throws Error {
         Assert.assertTrue("The element is not present", helper.isElementPresent(productCod));
     }

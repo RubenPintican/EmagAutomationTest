@@ -9,4 +9,4 @@ Scenario: Search for specific product on Emag and check discount
 Given I load test data
 When I SingIn on eMag
 When I search for iPhone X on eMag
-Then I verify if the oldprice:5.49999 Lei newprice:4.89999 Lei discount:(- 10% ) for product is correct
+Then I verify if the oldprice:5.39989 Lei newprice:4.92900 Lei discount:(- 8% ) for product is correct

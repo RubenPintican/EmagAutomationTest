@@ -13,7 +13,7 @@ public class EmagHomePage extends BasePage<EmagHomePage> {
 
     @FindBy(how = How.XPATH, using = "//a[@class='back-button']")
     private WebElement backHomePageButton;
-    @FindBy (how = How.XPATH,using = ".//*[@id='masthead']//div[1]/a/img")
+    @FindBy(how = How.XPATH, using = ".//*[@id='masthead']//div[1]/a/img")
     private WebElement logoButton;
 
     public EmagHomePage(WebDriver driver) {
@@ -40,7 +40,7 @@ public class EmagHomePage extends BasePage<EmagHomePage> {
     }
 
     protected void isLoaded() throws Error {
-        Assert.assertTrue("Button is not present",helper.isElementPresent(logoButton));
+        Assert.assertTrue("Button is not present", helper.isElementPresent(logoButton));
     }
 
 

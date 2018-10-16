@@ -1,6 +1,5 @@
 package pages.cel;
 
-import help.HelperMethods;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,10 +9,8 @@ import org.openqa.selenium.support.PageFactory;
 
 public class CelHomePage extends BasePage<CelHomePage> {
 
-    public HelperMethods helper = new HelperMethods(driver);
-
-    @FindBy(how = How.XPATH, using = "//div[@class='welcomeMsg']")
-    private WebElement welcomeMessage;
+    @FindBy(how = How.XPATH, using = ".//*[@id='logo_head']/img")
+    private WebElement logoButton;
 
     public CelHomePage(WebDriver driver) {
 
@@ -21,11 +18,6 @@ public class CelHomePage extends BasePage<CelHomePage> {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-
-//    public CelHomePage welcomeMessage() {
-//        Assert.assertTrue("Button is not present", helper.hoverWebElement(welcomeMessage, driver));
-//        return this;
-//    }
 
 
     public BasePage verifyPageTitle() {
@@ -38,6 +30,7 @@ public class CelHomePage extends BasePage<CelHomePage> {
     }
 
     protected void isLoaded() throws Error {
-        Assert.assertTrue(driver.getTitle().contains("CEL.ro - CEL mai ieftin, CEL mai rapid."));
+
+        Assert.assertTrue("Button not present", helper.isElementPresent(logoButton));
     }
 }

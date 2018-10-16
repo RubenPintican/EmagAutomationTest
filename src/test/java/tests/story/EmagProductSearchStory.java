@@ -39,7 +39,7 @@ public class EmagProductSearchStory extends JUnitStories {
         return new StoryFinder().
                 findPaths(CodeLocations.codeLocationFromClass(
                         this.getClass()),
-                        Arrays.asList("**/*.story"),
+                        Arrays.asList("**/EmagProductSearchStory.story"),
                         Arrays.asList(""));
 
     }

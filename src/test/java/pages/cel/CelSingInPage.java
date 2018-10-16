@@ -1,6 +1,5 @@
 package pages.cel;
 
-import help.HelperMethods;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,9 +9,8 @@ import org.openqa.selenium.support.PageFactory;
 
 public class CelSingInPage extends BasePage<CelSingInPage> {
 
-    public HelperMethods helper = new HelperMethods(driver);
 
-    public CelSingInPage (WebDriver driver) {
+    public CelSingInPage(WebDriver driver) {
 
         super(driver);
         this.driver = driver;
@@ -21,26 +19,25 @@ public class CelSingInPage extends BasePage<CelSingInPage> {
 
     @FindBy(how = How.ID, using = "email_address")
     private WebElement emailTextField;
-    @FindBy (how=How.NAME, using = "passwordx")
+    @FindBy(how = How.NAME, using = "passwordx")
     private WebElement passwordField;
-    @FindBy (how = How.XPATH, using = "//button[@class='btn btn-special']")
+    @FindBy(how = How.XPATH, using = "//button[@class='btn btn-special']")
     private WebElement logInButton;
 
 
-    public CelSingInPage fillEmailField()
-    {
-        emailTextField.sendKeys("ruben.pintican@yahoo.com");
+    public CelSingInPage fillEmailField(String emailAccount) {
+        helper.fillWebElement(emailTextField,driver);
+        emailTextField.sendKeys(emailAccount);
         return this;
     }
 
-    public CelSingInPage fillPasswordField()
-    {
-        passwordField.sendKeys("Cel2018!");
+    public CelSingInPage fillPasswordField(String passwordAccount) {
+        helper.fillWebElement(passwordField, driver);
+        passwordField.sendKeys(passwordAccount);
         return this;
     }
 
-    public CelHomePage singInButton()
-    {
+    public CelHomePage singInButton() {
         logInButton.click();
         return new CelHomePage(driver).get();
     }

@@ -19,7 +19,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @RunWith(JUnitReportingRunner.class)
-public class CelSingInStory extends JUnitStories {
+public class CelProductSearchStory extends JUnitStories {
 
 
     @Override
@@ -41,7 +41,7 @@ public class CelSingInStory extends JUnitStories {
         return new StoryFinder().
                 findPaths(CodeLocations.codeLocationFromClass(
                         this.getClass()),
-                        Arrays.asList("**/CelSingUpStory.story"),
+                        Arrays.asList("**/CelProductSearchStory.story"),
                         Arrays.asList(""));
 
     }

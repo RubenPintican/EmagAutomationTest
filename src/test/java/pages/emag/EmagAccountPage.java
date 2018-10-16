@@ -35,13 +35,6 @@ public class EmagAccountPage extends BasePage<EmagAccountPage> {
         PageFactory.initElements(driver, this);
     }
 
-//    public EmagAccountPage validateNameAccount()
-//    {
-//        helper.waitExplicit(verifyNameAccount,driver);
-//        Assert.assertTrue(verifyNameAccount.getText().contains("Ruben Pintican"));
-//        return this;
-//    }
-
     public EmagAccountPage clickGenderButton() {
         genderButton.click();
         return this;
@@ -66,15 +59,14 @@ public class EmagAccountPage extends BasePage<EmagAccountPage> {
         return this;
     }
 
-    public EmagAccountPage clickYearButton()
-    {
-        helper.selectByValue(yearButton,"1995");
+    public EmagAccountPage clickYearButton() {
+        helper.selectByValue(yearButton, "1995");
         yearButton.click();
         return this;
     }
-    public EmagAccountPage clickEducationButton()
-    {
-        helper.selectByValue(educationButton,"4");
+
+    public EmagAccountPage clickEducationButton() {
+        helper.selectByValue(educationButton, "4");
         educationButton.click();
         return this;
     }
@@ -84,6 +76,7 @@ public class EmagAccountPage extends BasePage<EmagAccountPage> {
     }
 
     protected void isLoaded() throws Error {
+        Assert.assertTrue("Name is not correct displayed", verifyNameAccount.isDisplayed());
 
     }
 }

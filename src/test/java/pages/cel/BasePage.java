@@ -14,19 +14,18 @@ public abstract class BasePage<T extends LoadableComponent<T>> extends LoadableC
     WebDriver driver;
     public HelperMethods helper = new HelperMethods(driver);
 
-    @FindBy (how = How.XPATH, using = "//i[@class='icon-supervisor_account']")
+    @FindBy(how = How.XPATH, using = "//i[@class='icon-supervisor_account']")
     private WebElement myAccount;
     @FindBy(how = How.ID, using = "keyword")
     private WebElement searchField;
     @FindBy(how = How.XPATH, using = ".//*[@id='quick_find']/button")
     private WebElement searchButton;
-    @FindBy (how = How.XPATH, using = ".//*[@id='login_header']/div//a[1]")
+    @FindBy(how = How.XPATH, using = ".//*[@id='login_header']/div//a[1]")
     private WebElement logInOptionButton;
-    @FindBy (how = How.XPATH, using = ".//*[@id='login_header']/div//a[2]")
+    @FindBy(how = How.XPATH, using = ".//*[@id='login_header']/div//a[2]")
     private WebElement singUpOptionButton;
-    @FindBy (how = How.XPATH, using = "//div[@class='welcomeMsg']")
-    private WebElement welcomeMessage;
-
+    @FindBy(how = How.XPATH, using = "//div[@class='welcomeMsg']")
+    private WebElement myNameAccount;
 
 
     public BasePage(WebDriver driver) {
@@ -40,24 +39,21 @@ public abstract class BasePage<T extends LoadableComponent<T>> extends LoadableC
         }
     }
 
-    public CelSingInPage singInCellAccount()
-    {
-        helper.hoverWebElement(myAccount,driver);
+    public CelSingInPage singInCellAccount() {
+        helper.hoverWebElement(myAccount, driver);
         logInOptionButton.click();
         return new CelSingInPage(driver);
     }
 
-    public CelSingUpPage singUpCellAccount()
-    {
-        helper.hoverWebElement(myAccount,driver);
+    public CelSingUpPage singUpCellAccount() {
+        helper.hoverWebElement(myAccount, driver);
         singUpOptionButton.click();
         return new CelSingUpPage(driver);
     }
 
-    public CelHomePage welcomeMessage()
-    {
-        helper.hoverWebElement(welcomeMessage,driver);
-        Assert.assertTrue(welcomeMessage.getText().contains("Pintican Ruben"));
+    public CelHomePage welcomeMessage() {
+        helper.hoverWebElement(myNameAccount, driver);
+        Assert.assertTrue("Element is not present",helper.isElementPresent(myNameAccount));
         return new CelHomePage(driver);
     }
 

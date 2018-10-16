@@ -12,14 +12,14 @@ public class EmagCartShop extends BasePage<EmagCartShop> {
 
     @FindBy(how = How.XPATH, using = "//div[@class='order-summary-text']")
     private WebElement orderSummary;
-    @FindBy (how = How.XPATH, using = "//h2[@class='cart-vendor-title']")
+    @FindBy(how = How.XPATH, using = "//h2[@class='cart-vendor-title']")
     private WebElement verifyProductInCart;
 
     public EmagCartShop(WebDriver driver) {
 
-            super(driver);
-            this.driver = driver;
-            PageFactory.initElements(driver, this);
+        super(driver);
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
 
     }
 
@@ -29,13 +29,12 @@ public class EmagCartShop extends BasePage<EmagCartShop> {
      * @return
      */
     public EmagCartShop validateOrderSummary() {
-        Assert.assertTrue(driver.getPageSource().contains("Sumar comanda"));
+        Assert.assertTrue(helper.isElementPresent(orderSummary));
         return this;
 
     }
 
-    public EmagCartShop verifyProductInCart()
-    {
+    public EmagCartShop verifyProductInCart() {
         Assert.assertTrue(verifyProductInCart.getText().contains("Produse vandute si livrate de eMAG"));
         return this;
     }

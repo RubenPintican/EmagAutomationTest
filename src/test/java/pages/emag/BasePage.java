@@ -1,5 +1,6 @@
 package pages.emag;
 
+import help.HelperMethods;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,6 +11,7 @@ import org.openqa.selenium.support.ui.LoadableComponent;
 public abstract class BasePage<T extends LoadableComponent<T>>extends LoadableComponent<T>  {
 
     WebDriver driver;
+    public HelperMethods helper = new HelperMethods(driver);
 
     @FindBy(how = How.ID, using = "searchboxTrigger")
     private WebElement searchField;
