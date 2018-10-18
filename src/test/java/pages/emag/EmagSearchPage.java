@@ -28,22 +28,23 @@ public class EmagSearchPage extends BasePage<EmagSearchPage> {
     /**
      * Verify that the title is correct
      *
-     * @param productName
+     * @param
      * @return
      */
-    public EmagSearchPage verifySearchPageTitle(String productName) {
-        Assert.assertEquals("Cauti " + productName + " ? Descopera Oferta - eMAG.ro", driver.getTitle());
+    public EmagSearchPage verifySearchPageTitle() {
+        Assert.assertTrue("Title is not correct", driver.getTitle().contains("eMAG.ro"));
         return this;
     }
 
     /**
      * Validate if the product is displayed
      *
-     * @param productName
+     *
      * @return
      */
-    public EmagSearchPage validateResults(String productName) {
-        Assert.assertTrue(searchResult.getText().contains(productName));
+    public EmagSearchPage validateResults() {
+        helper.waitExplicit(searchResult,driver);
+        Assert.assertTrue(helper.isElementPresent(searchResult));
         return this;
     }
 
@@ -81,7 +82,7 @@ public class EmagSearchPage extends BasePage<EmagSearchPage> {
     }
 
     protected void isLoaded() throws Error {
-        Assert.assertTrue(driver.getTitle().contains("Cauti iPhone X ? Descopera Oferta - eMAG.ro"));
+
     }
 }
 

@@ -7,10 +7,10 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-public class CelSingInPage extends BasePage<CelSingInPage> {
+public class CelLogInPage extends BasePage<CelLogInPage> {
 
 
-    public CelSingInPage(WebDriver driver) {
+    public CelLogInPage(WebDriver driver) {
 
         super(driver);
         this.driver = driver;
@@ -25,13 +25,13 @@ public class CelSingInPage extends BasePage<CelSingInPage> {
     private WebElement logInButton;
 
 
-    public CelSingInPage fillEmailField(String emailAccount) {
+    public CelLogInPage fillEmailField(String emailAccount) {
         helper.fillWebElement(emailTextField,driver);
         emailTextField.sendKeys(emailAccount);
         return this;
     }
 
-    public CelSingInPage fillPasswordField(String passwordAccount) {
+    public CelLogInPage fillPasswordField(String passwordAccount) {
         helper.fillWebElement(passwordField, driver);
         passwordField.sendKeys(passwordAccount);
         return this;

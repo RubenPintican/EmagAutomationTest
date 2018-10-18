@@ -10,8 +10,6 @@ import org.openqa.selenium.support.PageFactory;
 public class EmagCartShop extends BasePage<EmagCartShop> {
 
 
-    @FindBy(how = How.XPATH, using = "//div[@class='order-summary-text']")
-    private WebElement orderSummary;
     @FindBy(how = How.XPATH, using = "//h2[@class='cart-vendor-title']")
     private WebElement verifyProductInCart;
 
@@ -20,17 +18,6 @@ public class EmagCartShop extends BasePage<EmagCartShop> {
         super(driver);
         this.driver = driver;
         PageFactory.initElements(driver, this);
-
-    }
-
-    /**
-     * Command summary validation
-     *
-     * @return
-     */
-    public EmagCartShop validateOrderSummary() {
-        Assert.assertTrue(helper.isElementPresent(orderSummary));
-        return this;
 
     }
 

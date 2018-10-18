@@ -24,18 +24,19 @@ public class HelperMethods {
      */
 
     public void clickWebElement(WebElement element) {
-        waitExplicit(element,driver);
+        waitExplicit(element, driver);
         element.click();
     }
 
     /**
      * Fill WebElement with a value
-     *  @param element
+     *
+     * @param element
      * @param
      */
 
     public void fillWebElement(WebElement element, WebDriver driver) {
-        waitExplicit(element,driver);
+        waitExplicit(element, driver);
         element.clear();
         element.sendKeys();
     }
@@ -44,9 +45,8 @@ public class HelperMethods {
      * Hover a WebElement
      */
 
-    public void hoverWebElement ( WebElement element, WebDriver driver)
-    {
-        Actions action=new Actions(driver);
+    public void hoverWebElement(WebElement element, WebDriver driver) {
+        Actions action = new Actions(driver);
         action.moveToElement(element).build().perform();
     }
 
@@ -65,12 +65,17 @@ public class HelperMethods {
         new WebDriverWait(driver, 15).until(ExpectedConditions.invisibilityOf(element));
     }
 
-   public void waitFillPasswordBoxfillPasswordField (WebElement password)
-   {
-       JavascriptExecutor jse=(JavascriptExecutor)driver;
-       jse.executeScript("arguments[0].value='"+password+"';",password);
+    public void fillField(WebElement password) {
+        JavascriptExecutor jse = (JavascriptExecutor) driver;
+        jse.executeScript("arguments[0].value='" + password + "';", password);
 
-   }
+    }
+
+    public void clickRandomWebElement(WebElement element)
+    {
+        JavascriptExecutor executor = (JavascriptExecutor)driver;
+        executor.executeScript("arguments[0].click();", element);
+    }
 
     /**
      * Validate page title

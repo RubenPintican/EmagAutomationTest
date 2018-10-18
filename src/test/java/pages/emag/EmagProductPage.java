@@ -12,7 +12,7 @@ import org.openqa.selenium.support.PageFactory;
 public class EmagProductPage extends BasePage<EmagProductPage> {
 
     @FindBy(how = How.XPATH, using = "//i[@class='em em-cart_fill gtm_680klw']")
-    private WebElement addCartButton;
+    private WebElement cartButton;
     @FindBy(how = How.XPATH, using = "//h4[@class='mrg-sep-none']")
     private WebElement validateProductInCart;
     @FindBy(how = How.XPATH, using = "//a[@class='btn btn-primary btn-sm btn-block']")
@@ -84,8 +84,8 @@ public class EmagProductPage extends BasePage<EmagProductPage> {
      *
      * @return
      */
-    public EmagProductPage addPhoneToCart() {
-        helper.clickWebElement(addCartButton);
+    public EmagProductPage addProductToCart() {
+        helper.clickWebElement(cartButton);
         return this;
     }
 
@@ -96,6 +96,7 @@ public class EmagProductPage extends BasePage<EmagProductPage> {
      */
     //schimba assert
     public EmagProductPage validateProductInCart() {
+        helper.waitExplicit(validateProductInCart, driver);
         Assert.assertTrue(helper.isElementPresent(validateProductInCart));
         return this;
     }
@@ -106,8 +107,7 @@ public class EmagProductPage extends BasePage<EmagProductPage> {
      * @return
      */
     public EmagCartShop clickOnDetailsButton() {
-
-        helper.clickWebElement(clickOnDetailsCartButton);
+        clickOnDetailsCartButton.click();
         return new EmagCartShop(driver).get();
     }
 

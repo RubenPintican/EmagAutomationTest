@@ -26,10 +26,11 @@ public abstract class BasePage<T extends LoadableComponent<T>> extends LoadableC
     private WebElement singUpOptionButton;
     @FindBy(how = How.XPATH, using = "//div[@class='welcomeMsg']")
     private WebElement myNameAccount;
+    @FindBy(how = How.XPATH, using = "//a[@href='altele/logoff.html']")
+    private WebElement logOutButton;
 
 
     public BasePage(WebDriver driver) {
-
 
         {
 
@@ -39,16 +40,23 @@ public abstract class BasePage<T extends LoadableComponent<T>> extends LoadableC
         }
     }
 
-    public CelSingInPage singInCellAccount() {
+    public CelLogInPage singInCellAccount() {
         helper.hoverWebElement(myAccount, driver);
         logInOptionButton.click();
-        return new CelSingInPage(driver);
+        return new CelLogInPage(driver);
     }
 
     public CelSingUpPage singUpCellAccount() {
         helper.hoverWebElement(myAccount, driver);
         singUpOptionButton.click();
         return new CelSingUpPage(driver);
+    }
+
+    public CelLogOutPage logOutFromAccount()
+    {
+        helper.hoverWebElement(myAccount, driver);
+        logOutButton.click();
+        return new CelLogOutPage(driver);
     }
 
     public CelHomePage welcomeMessage() {

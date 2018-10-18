@@ -14,3 +14,7 @@
 # Maven
 log/
 target/
+
+#Ignore Screen shots
+######################
+screenshot/**/*

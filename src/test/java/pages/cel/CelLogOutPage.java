@@ -7,23 +7,20 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-public class CelHomePage extends BasePage<CelHomePage> {
+public class CelLogOutPage extends BasePage<CelLogOutPage> {
 
-
-    public CelHomePage(WebDriver driver) {
+    public CelLogOutPage (WebDriver driver) {
 
         super(driver);
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-
     protected void load() {
-        driver.get("http://www.cel.ro/");
+        driver.navigate().refresh();
     }
 
     protected void isLoaded() throws Error {
-
-        Assert.assertTrue(driver.getTitle().contains("CEL.ro - CEL mai ieftin, CEL mai rapid."));
+        Assert.assertTrue(driver.getTitle().contains("CEL.ro"));
     }
 }

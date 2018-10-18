@@ -33,10 +33,10 @@ public abstract class BasePage<T extends LoadableComponent<T>>extends LoadableCo
         myAccountButton.click();
         return new EmagSingUpPage(driver).get();
     }
-    public EmagSingInPage goToSingIn()
+    public EmagLogInPage goToSingIn()
     {
         myAccountButton.click();
-        return new EmagSingInPage(driver).get();
+        return new EmagLogInPage(driver).get();
     }
 
     public EmagAccountPage goToAccountPage ()
