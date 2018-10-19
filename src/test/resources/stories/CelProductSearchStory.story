@@ -15,7 +15,9 @@ Then I LogOut from my Account
 Examples:
 
 |phoneName|oldPrice|newPrice|discount|
-|iPhone X|5999|5599|400|
+|iPhone X|5399|4849|550|
 |Samsung Galaxy S9|4699|3999|700|
-|Huawei P20 Pro|3899|3399|500|
+|Huawei P20 Pro|3899|3599|300|
+|Televizor LED 138 cm Samsung|3499|2499|1000|
+|Aspirator fara sac Philips PowerPro|1819|1299|520|
 

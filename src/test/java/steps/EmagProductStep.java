@@ -1,6 +1,7 @@
 package steps;
 
 import help.ShareData;
+import net.thucydides.core.annotations.Step;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import pages.emag.EmagHomePage;
@@ -10,7 +11,7 @@ public class EmagProductStep extends BaseSteps {
     public EmagProductStep(ShareData share) {
         super(share);
     }
-
+    @Step
     @When("I LogIn on eMag and I complete my account details")
     public void singInPage() {
         EmagHomePage homePage = new EmagHomePage(share.driver).get();
@@ -27,7 +28,7 @@ public class EmagProductStep extends BaseSteps {
                 .clickYearButton()
                 .clickEducationButton();
     }
-
+    @Step
     @When("I search for $product on eMag")
     public void searchForProduct(String product) {
         EmagHomePage homePage = new EmagHomePage(share.driver).get();
@@ -37,13 +38,13 @@ public class EmagProductStep extends BaseSteps {
                 .validateResults()
                 .clickOnFirstItems(product);
     }
-
-    @Then("I verify if the oldprice:$oldprice newprice:$newprice discount:$discount for product is correct")
-    public void verifyDiscountForProduct(String oldprice, String newprice, String discount) {
+    @Step
+    @Then("I verify if the oldprice:$oldPrice newprice:$newPrice discount:$discount for product is correct")
+    public void verifyDiscountForProduct(String oldPrice, String newPrice, String discount) {
         EmagProductPage productPage = new EmagProductPage(share.driver).get();
         productPage.validateCodProduct()
                 .verifyThatTheProductIsInStock()
-                .validateDiscountProduct(oldprice, newprice, discount)
+                .validateDiscountProduct(oldPrice, newPrice, discount)
                 .addProductToCart()
                 .validateProductInCart()
                 .clickOnDetailsButton()

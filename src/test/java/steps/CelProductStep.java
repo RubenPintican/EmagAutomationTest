@@ -1,6 +1,7 @@
 package steps;
 
 import help.ShareData;
+import net.thucydides.core.annotations.Step;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import pages.cel.CelHomePage;
@@ -10,6 +11,8 @@ public class CelProductStep extends BaseSteps {
     public CelProductStep(ShareData share) {
         super(share);
     }
+
+
 
     @When("I search for $product on Cel")
     public void searchProductOnCel(String product) {

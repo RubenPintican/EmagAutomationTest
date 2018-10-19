@@ -1,6 +1,7 @@
 package steps;
 
 import help.ShareData;
+import net.thucydides.core.annotations.Step;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;

@@ -45,6 +45,6 @@ public class CelSearchPage extends BasePage<CelSearchPage> {
     }
 
     protected void isLoaded() throws Error {
-        Assert.assertTrue(driver.getTitle().contains("ieftin ieftine pagina 1"));
+        Assert.assertTrue(driver.getTitle().contains("ieftine pagina 1"));
     }
 }
