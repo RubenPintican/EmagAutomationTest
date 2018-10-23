@@ -36,7 +36,7 @@ public class CelUserStep extends BaseSteps {
     }
 
     @When("I LogIn on Cel")
-    public void singInPage() {
+    public void logInToMyAccount() {
         CelHomePage homePage = new CelHomePage(share.driver).get();
         homePage.singInCellAccount()
                 .fillEmailField(share.myCelEmailAccount)
@@ -47,7 +47,7 @@ public class CelUserStep extends BaseSteps {
     }
 
     @Then("I LogOut from my Account")
-    public void  logOutPage(){
+    public void logOutFromMyAccount() {
         CelHomePage homePage = new CelHomePage(share.driver).get();
         homePage.logOutFromAccount();
     }

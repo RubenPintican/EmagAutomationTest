@@ -4,6 +4,8 @@ package tests.story;
 import com.github.valfirst.jbehave.junit.monitoring.JUnitReportingRunner;
 import help.ScreenShotOnFailure;
 import help.ShareData;
+import org.jbehave.core.annotations.BeforeScenario;
+import org.jbehave.core.annotations.ScenarioType;
 import org.jbehave.core.configuration.Configuration;
 import org.jbehave.core.configuration.MostUsefulConfiguration;
 import org.jbehave.core.io.CodeLocations;
@@ -14,6 +16,8 @@ import org.jbehave.core.steps.InstanceStepsFactory;
 import org.jbehave.core.steps.Steps;
 import org.junit.Rule;
 import org.junit.runner.RunWith;
+import pages.cel.CelHomePage;
+import pages.cel.CelLogInPage;
 import steps.CelProductStep;
 import steps.CelUserStep;
 

@@ -26,7 +26,7 @@ public class CelLogInPage extends BasePage<CelLogInPage> {
 
 
     public CelLogInPage fillEmailField(String emailAccount) {
-        helper.fillWebElement(emailTextField,driver);
+        helper.fillWebElement(emailTextField, driver);
         emailTextField.sendKeys(emailAccount);
         return this;
     }
@@ -48,6 +48,6 @@ public class CelLogInPage extends BasePage<CelLogInPage> {
     }
 
     protected void isLoaded() throws Error {
-        Assert.assertTrue(driver.getTitle().contains("CEL.ro"));
+        Assert.assertTrue(driver.getTitle().contains("Login"));
     }
 }

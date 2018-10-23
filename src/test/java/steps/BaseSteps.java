@@ -1,6 +1,7 @@
 package steps;
 
 import help.ShareData;
+import org.jbehave.core.annotations.AfterStory;
 import org.jbehave.core.steps.Steps;
 
 public class BaseSteps extends Steps {
@@ -12,4 +13,13 @@ public class BaseSteps extends Steps {
         this.share = share;
     }
 
+
+    @AfterStory()
+    public void closeDriver() {
+        share.driver.close();
+    }
+
+
 }
+
+

@@ -37,8 +37,8 @@ public class EmagProductSearchStory extends JUnitStories {
     @Override
     public InjectableStepsFactory stepsFactory() {
         ArrayList<Steps> stepFileList = new ArrayList<Steps>();
-        stepFileList.add(new EmagUserStep(share));
         stepFileList.add(new EmagProductStep(share));
+        stepFileList.add(new EmagUserStep(share));
 
 
         return new InstanceStepsFactory(configuration(), stepFileList);
@@ -53,6 +53,5 @@ public class EmagProductSearchStory extends JUnitStories {
                         Arrays.asList(""));
 
     }
-
 
 }

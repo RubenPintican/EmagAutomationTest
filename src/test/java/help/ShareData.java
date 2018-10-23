@@ -45,7 +45,7 @@ public class ShareData {
 
         name = properties.getProperty("emag.name");
         password = properties.getProperty("emag.password");
-        confirmPassword =properties.getProperty("emag.confirm.password");
+        confirmPassword = properties.getProperty("emag.confirm.password");
         nickName = properties.getProperty("emag.nick.name");
         mobilePhone = properties.getProperty("emag.mobile.phone");
 

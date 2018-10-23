@@ -1,12 +1,14 @@
 package pages.emag;
 
 import help.HelperMethods;
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.LoadableComponent;
+import pages.cel.CelHomePage;
 
 public abstract class BasePage<T extends LoadableComponent<T>>extends LoadableComponent<T>  {
 
@@ -19,6 +21,10 @@ public abstract class BasePage<T extends LoadableComponent<T>>extends LoadableCo
     private WebElement searchButton;
     @FindBy(how = How.ID, using = "my_account")
     private WebElement myAccountButton;
+    @FindBy(how = How.XPATH, using = "//div[@class='ph-dropdown-inner']/p/strong")
+    private WebElement myAccountName;
+    @FindBy (how = How.XPATH, using = "//a[@class='js-logout-link']")
+    private WebElement logOutButton;
 
     public BasePage(WebDriver driver) {
         {
@@ -33,7 +39,7 @@ public abstract class BasePage<T extends LoadableComponent<T>>extends LoadableCo
         myAccountButton.click();
         return new EmagSingUpPage(driver).get();
     }
-    public EmagLogInPage goToSingIn()
+    public EmagLogInPage goToLogIn()
     {
         myAccountButton.click();
         return new EmagLogInPage(driver).get();
@@ -63,7 +69,19 @@ public abstract class BasePage<T extends LoadableComponent<T>>extends LoadableCo
      */
     public EmagSearchPage clickOnSearchButton() {
         searchButton.click();
-        return new EmagSearchPage(driver);
+        return new EmagSearchPage(driver).get();
     }
 
+    public boolean checkIfLogedIn()
+    {
+        helper.hoverWebElement(myAccountButton,driver);
+        return helper.isElementPresent(logOutButton);
+    }
+
+    public BasePage<T> welcomeMessage()
+    {
+        helper.hoverWebElement(myAccountButton, driver);
+        Assert.assertTrue("Element is not present",helper.isElementPresent(myAccountName));
+        return this;
+    }
 }

@@ -71,9 +71,8 @@ public class HelperMethods {
 
     }
 
-    public void clickRandomWebElement(WebElement element)
-    {
-        JavascriptExecutor executor = (JavascriptExecutor)driver;
+    public void clickRandomWebElement(WebElement element) {
+        JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("arguments[0].click();", element);
     }
 

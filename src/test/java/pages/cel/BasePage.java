@@ -25,7 +25,7 @@ public abstract class BasePage<T extends LoadableComponent<T>> extends LoadableC
     @FindBy(how = How.XPATH, using = ".//*[@id='login_header']/div//a[2]")
     private WebElement singUpOptionButton;
     @FindBy(how = How.XPATH, using = "//div[@class='welcomeMsg']")
-    private WebElement myNameAccount;
+    private WebElement myAccountName;
     @FindBy(how = How.XPATH, using = "//a[@href='altele/logoff.html']")
     private WebElement logOutButton;
 
@@ -43,26 +43,29 @@ public abstract class BasePage<T extends LoadableComponent<T>> extends LoadableC
     public CelLogInPage singInCellAccount() {
         helper.hoverWebElement(myAccount, driver);
         logInOptionButton.click();
-        return new CelLogInPage(driver);
+        return new CelLogInPage(driver).get();
     }
 
     public CelSingUpPage singUpCellAccount() {
         helper.hoverWebElement(myAccount, driver);
         singUpOptionButton.click();
-        return new CelSingUpPage(driver);
+        return new CelSingUpPage(driver).get();
     }
 
-    public CelLogOutPage logOutFromAccount()
-    {
+    public CelLogOutPage logOutFromAccount() {
         helper.hoverWebElement(myAccount, driver);
         logOutButton.click();
-        return new CelLogOutPage(driver);
+        return new CelLogOutPage(driver).get();
     }
 
     public CelHomePage welcomeMessage() {
-        helper.hoverWebElement(myNameAccount, driver);
-        Assert.assertTrue("Element is not present",helper.isElementPresent(myNameAccount));
-        return new CelHomePage(driver);
+        helper.hoverWebElement(myAccountName, driver);
+        Assert.assertTrue("Element is not present", helper.isElementPresent(myAccountName));
+        return new CelHomePage(driver).get();
+    }
+
+    public boolean checkIfLogedIn() {
+        return helper.isElementPresent(myAccountName);
     }
 
     /**
