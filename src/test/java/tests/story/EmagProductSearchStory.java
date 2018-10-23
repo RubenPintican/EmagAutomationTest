@@ -19,7 +19,7 @@ import java.util.Arrays;
 import java.util.List;
 
 
-public class EmagProductSearchStory extends SerenityStories {
+public class EmagProductSearchStory extends SerenityStory {
 
     ShareData share = new ShareData();
 

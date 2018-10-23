@@ -1,10 +1,8 @@
 package tests.story;
 
 
-import com.github.valfirst.jbehave.junit.monitoring.JUnitReportingRunner;
 import help.ScreenShotOnFailure;
 import help.ShareData;
-import net.serenitybdd.jbehave.SerenityStories;
 import net.serenitybdd.jbehave.SerenityStory;
 import org.jbehave.core.configuration.Configuration;
 import org.jbehave.core.configuration.MostUsefulConfiguration;
@@ -13,8 +11,8 @@ import org.jbehave.core.io.StoryFinder;
 import org.jbehave.core.steps.InjectableStepsFactory;
 import org.jbehave.core.steps.InstanceStepsFactory;
 import org.jbehave.core.steps.Steps;
+import org.junit.After;
 import org.junit.Rule;
-import org.junit.runner.RunWith;
 import steps.CelProductStep;
 import steps.CelUserStep;
 
@@ -23,7 +21,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class CelProductSearchStory extends SerenityStories {
+public class CelProductSearchStory extends SerenityStory {
 
     ShareData share = new ShareData();
 
@@ -59,6 +57,8 @@ public class CelProductSearchStory extends SerenityStories {
                         Arrays.asList(""));
 
     }
+
+
 
 
 }

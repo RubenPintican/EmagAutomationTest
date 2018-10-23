@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class CelUserStory extends SerenityStories {
+public class CelUserStory extends SerenityStory {
 
     ShareData share = new ShareData();
 
