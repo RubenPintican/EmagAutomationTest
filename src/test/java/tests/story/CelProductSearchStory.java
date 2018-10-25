@@ -1,30 +1,31 @@
 package tests.story;
 
 
-import com.github.valfirst.jbehave.junit.monitoring.JUnitReportingRunner;
-import help.ScreenShotOnFailure;
-import help.ShareData;
-import org.jbehave.core.annotations.BeforeScenario;
-import org.jbehave.core.annotations.ScenarioType;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.jbehave.core.configuration.Configuration;
 import org.jbehave.core.configuration.MostUsefulConfiguration;
 import org.jbehave.core.io.CodeLocations;
 import org.jbehave.core.io.StoryFinder;
 import org.jbehave.core.junit.JUnitStories;
+import org.jbehave.core.reporters.Format;
+import org.jbehave.core.reporters.FreemarkerViewGenerator;
+import org.jbehave.core.reporters.StoryReporterBuilder;
 import org.jbehave.core.steps.InjectableStepsFactory;
 import org.jbehave.core.steps.InstanceStepsFactory;
 import org.jbehave.core.steps.Steps;
 import org.junit.Rule;
 import org.junit.runner.RunWith;
-import pages.cel.CelHomePage;
-import pages.cel.CelLogInPage;
+
+import com.github.valfirst.jbehave.junit.monitoring.JUnitReportingRunner;
+
+import help.ScreenShotOnFailure;
+import help.ShareData;
 import steps.CelProductStep;
 import steps.CelUserStep;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 @RunWith(JUnitReportingRunner.class)
 public class CelProductSearchStory extends JUnitStories {
@@ -40,7 +41,9 @@ public class CelProductSearchStory extends JUnitStories {
 
     @Override
     public Configuration configuration() {
-        return new MostUsefulConfiguration();
+        return new MostUsefulConfiguration().useStoryReporterBuilder(new StoryReporterBuilder().withDefaultFormats()
+                .withFormats(Format.TXT, Format.CONSOLE, Format.HTML_TEMPLATE, Format.HTML, Format.XML, Format.XML_TEMPLATE))
+        .useViewGenerator(new FreemarkerViewGenerator());
     }
 
 
@@ -49,8 +52,6 @@ public class CelProductSearchStory extends JUnitStories {
         ArrayList<Steps> stepFileList = new ArrayList<Steps>();
         stepFileList.add(new CelUserStep(share));
         stepFileList.add(new CelProductStep(share));
-
-
         return new InstanceStepsFactory(configuration(), stepFileList);
     }
 
